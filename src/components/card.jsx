@@ -36,11 +36,14 @@ const Card = ({ user }) => {
           src="./internet.png"
           alt="Link to homepage"
           url={user.website}
+          external={true}
         />
         <Icon
           basicIconStyle={basicIconStyle}
           src="./info.png"
           alt="More info"
+          url={`/${user.id}`}
+          external={false}
         />
       </div>
     </div>

@@ -2,19 +2,34 @@ import "./App.css";
 import userService from "./Services/communicate";
 import { useEffect, useState } from "react";
 import User from "./components/user";
-import Card from "./components/card";
-import Avatar from "./components/avatar";
+import { Routes, Route, BrowserRouter } from "react-router-dom";
+import Info from "./components/Info";
 
 function App() {
   const [allUsers, setAllUsers] = useState([]);
 
   useEffect(() => {
-    userService.getAll().then((res) => setAllUsers(res));
+    userService
+      .getAll("https://jsonplaceholder.typicode.com/users")
+      .then((res) => setAllUsers(res));
   }, []);
 
   return (
-    <div className="container" style={{ maxWidth: "900px", margin: "auto" }}>
-      <User allUsers={allUsers} />
+    <div
+      className="container"
+      style={{
+        maxWidth: "900px",
+        margin: "auto",
+        height: "100vh",
+        position: "relative",
+      }}
+    >
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<User allUsers={allUsers} />} />
+          <Route path="/:id" element={<Info allUsers={allUsers} />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
