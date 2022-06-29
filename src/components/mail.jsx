@@ -15,6 +15,13 @@ const Mail = ({ setBasicIconStyle, user }) => {
       alignItems: "center",
     },
     mailStyle: { width: "32px", height: "32px" },
+    addressStyle: {
+      fontSize: "60%",
+      margin: "auto",
+      textDecoration: "none",
+      fontWeight: "bold",
+      color: "black",
+    },
   });
 
   return (
@@ -65,7 +72,34 @@ const Mail = ({ setBasicIconStyle, user }) => {
     >
       <img src="/mail.png" alt={user.email} style={style.mailStyle} />
       {style.hover && (
-        <a style={{ fontSize: "11px", margin: "auto" }} href={EmailIt}>
+        <a
+          style={style.addressStyle}
+          onMouseEnter={() =>
+            setStyle({
+              ...style,
+              addressStyle: {
+                fontSize: "60%",
+                margin: "auto",
+                textDecoration: "none",
+                fontWeight: "bold",
+                color: "blue",
+              },
+            })
+          }
+          onMouseLeave={() =>
+            setStyle({
+              ...style,
+              addressStyle: {
+                fontSize: "60%",
+                margin: "auto",
+                textDecoration: "none",
+                fontWeight: "bold",
+                color: "Black",
+              },
+            })
+          }
+          href={EmailIt}
+        >
           {user.email}
         </a>
       )}

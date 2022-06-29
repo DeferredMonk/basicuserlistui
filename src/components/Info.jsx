@@ -37,7 +37,9 @@ const Info = ({ allUsers }) => {
       <table>
         <thead>
           <tr>
-            <th>User information</th>
+            <th style={{ textAlign: "left", paddingBottom: "10px" }}>
+              User information
+            </th>
           </tr>
         </thead>
         <tbody>
